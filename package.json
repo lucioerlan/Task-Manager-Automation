@@ -1,0 +1,49 @@
+{
+  "name": "Task-Manager-Automation",
+  "author": "Erlan Lucio",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "husky": {
+    "hooks": {
+      "pre-push": "cross-env CI=true npm run test"
+    }
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest --testTimeout=60000 --forceExit --detectOpenHandles",
+    "lint": "eslint src --fix --ext .js",
+    "lint-staged": "lint-staged",
+    "install:service": "node .windows/install_service.js",
+    "uninstall:service": "node .windows/uninstall_service.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucioerlan/Task-Manager-Automation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucioerlan/Task-Manager-Automation/issues"
+  },
+  "homepage": "https://github.com/lucioerlan/Task-Manager-Automation#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^8.2.0",
+    "node-cron": "^3.0.0",
+    "tasklist": "^5.0.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "chai": "4.3.4",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^4.0.10",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "node-windows": "1.0.0-beta.6",
+    "sonarqube-scanner": "2.8.1"
+  }
+}

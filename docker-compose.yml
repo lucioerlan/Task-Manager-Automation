@@ -1,0 +1,20 @@
+version: '3'
+
+volumes:
+  node_data: {}
+
+services:
+  server:
+    image: node:12.10.0-alpine
+    container_name: My_Job_Nodejs
+    environment:
+      - SCHEDULE_TIME=* * * * *
+      - NAME_SERVICE=chrome.exe
+      - MAX_MEMORY_SERVICE=50
+    restart: on-failure
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - './:/home/app/'
+    command: sh -c "cd /home/app && npm install --save && npm run start"
